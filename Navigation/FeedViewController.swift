@@ -7,10 +7,15 @@
 
 import UIKit
 
+
+
 class FeedViewController: UIViewController {
 
     override func viewDidLoad() {
             super.viewDidLoad()
+        
+        // Создаем объект типа Post
+            let post = Post(title: "Заголовок поста")
 
             let button = UIButton(type: .system)
             button.setTitle("Показать пост", for: .normal)
@@ -20,11 +25,16 @@ class FeedViewController: UIViewController {
 
             button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
             button.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
+        // Передаем объект типа Post в PostViewController
+                let postVC = PostViewController(post: post)
+        
         }
 
         @objc private func showPost() {
-            let postVC = PostViewController()
+            let postVC = PostViewController(post: Post(title: "Заголовок поста"))
             navigationController?.pushViewController(postVC, animated: true)
         }
 
 }
+
