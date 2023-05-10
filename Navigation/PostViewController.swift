@@ -24,13 +24,17 @@ class PostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Добавляем Bar Button Item в навигейшн бар
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,target: self, action: #selector(openInfo))
         title = post.title
-        view.backgroundColor = .white
+        view.backgroundColor = .orange
     }
     @objc private func openInfo() {
-            let infoVC = InfoViewController()
-            present(infoVC, animated: true, completion: nil)
-        }
+        let infoVC = InfoViewController()
+        present(infoVC, animated: true, completion: nil)
+    }
+    
+    @objc func buttonTapped() {
+        print("Button tapped")
+    }
 }
+

@@ -12,32 +12,22 @@ class InfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Создаем кнопку для отображения UIAlertController
         let button = UIButton(type: .system)
         button.setTitle("Показать Alert", for: .normal)
         button.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(button)
 
-        // Устанавливаем констрейнты для кнопки
-        button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        button.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        button.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            button.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
     }
 
     @objc private func showAlert() {
-        let alert = UIAlertController(title: "Заголовок", message: "Сообщение", preferredStyle: .alert)
-
-        let action1 = UIAlertAction(title: "Действие 1", style: .default) { (_) in
-            print("Нажата кнопка Действие 1")
-        }
-
-        let action2 = UIAlertAction(title: "Действие 2", style: .default) { (_) in
-            print("Нажата кнопка Действие 2")
-        }
-
-        alert.addAction(action1)
-        alert.addAction(action2)
-
+        let alert = UIAlertController(title: "Alert", message: "This is an alert.", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
 }

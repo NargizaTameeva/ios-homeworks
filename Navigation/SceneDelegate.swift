@@ -27,7 +27,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [feedNavigationController, profileNavigationController]
-
+        
+        let postVC = PostViewController(post: Post(title: "Заголовок поста"))
+        postVC.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Нажми меня", style: .plain, target: postVC, action: #selector(postVC.buttonTapped))
+        let navigationVC = UINavigationController(rootViewController: postVC)
+        navigationVC.modalPresentationStyle = .fullScreen
+        window?.rootViewController?.present(navigationVC, animated: true, completion: nil)
+        
         window?.rootViewController = tabBarController
         window?.backgroundColor = .systemMint
         window?.makeKeyAndVisible()
@@ -35,28 +41,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
     }
     
-   
+    func sceneDidDisconnect(_ scene: UIScene) {}
 
-    func sceneDidDisconnect(_ scene: UIScene) {
-       
-    }
+    func sceneDidBecomeActive(_ scene: UIScene) {}
 
-    func sceneDidBecomeActive(_ scene: UIScene) {
-       
-    }
+    func sceneWillResignActive(_ scene: UIScene) {}
 
-    func sceneWillResignActive(_ scene: UIScene) {
+    func sceneWillEnterForeground(_ scene: UIScene) {}
 
-    }
-
-    func sceneWillEnterForeground(_ scene: UIScene) {
-    
-    }
-
-    func sceneDidEnterBackground(_ scene: UIScene) {
-      
-    }
-
+    func sceneDidEnterBackground(_ scene: UIScene) {}
 
 }
 
