@@ -18,18 +18,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let feedVC = FeedViewController()
         let feedNavigationController = UINavigationController(rootViewController: feedVC)
-        feedNavigationController.tabBarItem = UITabBarItem(title: "Лента", image: UIImage(named: "feed"), tag: 0)
+        feedNavigationController.tabBarItem = UITabBarItem(title: "Лента", image: UIImage(systemName: "newspaper.fill"), tag: 0)
 
         let profileVC = ProfileViewController()
         let profileNavigationController = UINavigationController(rootViewController: profileVC)
-        profileNavigationController.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(named: "profile"), tag: 1)
+        profileNavigationController.view.backgroundColor = .systemYellow
+        profileNavigationController.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(systemName: "person"), tag: 1)
 
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [feedNavigationController, profileNavigationController]
 
         window?.rootViewController = tabBarController
+        window?.backgroundColor = .systemMint
         window?.makeKeyAndVisible()
+        
+        
     }
+    
    
 
     func sceneDidDisconnect(_ scene: UIScene) {

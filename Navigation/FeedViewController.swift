@@ -27,7 +27,7 @@ class FeedViewController: UIViewController {
             button.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
         // Передаем объект типа Post в PostViewController
-                let postVC = PostViewController(post: post)
+                _ = PostViewController(post: post)
         
         }
 
