@@ -7,35 +7,29 @@
 
 import UIKit
 
-
-
 class FeedViewController: UIViewController {
-
     override func viewDidLoad() {
-            super.viewDidLoad()
-        
-        let post = Post(title: "Заголовок поста")
-        let button = UIButton(type: .system)
+        super.viewDidLoad()
+        view.backgroundColor = .systemMint
+        navigationItem.title = "Лента"
+
+        let postButton: UIButton = {
+            let button = UIButton()
+            button.setTitleColor(.systemBlue, for: .normal)
             button.setTitle("Показать пост", for: .normal)
-            button.setTitleColor(.blue, for: .normal)
-            button.backgroundColor = .systemMint
-            button.layer.cornerRadius = 8
-            button.addTarget(self, action: #selector(showPost), for: .touchUpInside)
+            button.addTarget(self, action: #selector(addPost), for: .touchUpInside)
             button.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(button)
+            return button
+        }()
 
-            button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-            button.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        
-                _ = PostViewController(post: post)
-        
-        }
-
-    @objc private func showPost() {
-        let postVC = PostViewController(post: Post(title: "Заголовок поста"))
-        postVC.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Нажми меня", style: .plain, target: postVC, action: #selector(postVC.buttonTapped))
-        navigationController?.pushViewController(postVC, animated: true)
+        view.addSubview(postButton)
+        postButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        postButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
 
+    @objc func addPost() {
+        let post = Post(title: "Новый пост")
+        let postViewController = PostViewController(post: post)
+        navigationController?.pushViewController(postViewController, animated: true)
+    }
 }
-

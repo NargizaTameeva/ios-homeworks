@@ -10,11 +10,12 @@ import UIKit
 
 
 class PostViewController: UIViewController {
-    private let post: Post
+    let post: Post
 
     init(post: Post) {
         self.post = post
         super.init(nibName: nil, bundle: nil)
+        title = post.title
     }
 
     required init?(coder: NSCoder) {
@@ -23,18 +24,14 @@ class PostViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,target: self, action: #selector(openInfo))
-        title = post.title
         view.backgroundColor = .orange
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Info", style: .plain, target: self, action: #selector(showInfo))
     }
-    @objc private func openInfo() {
-        let infoVC = InfoViewController()
-        present(infoVC, animated: true, completion: nil)
-    }
-    
-    @objc func buttonTapped() {
-        print("Button tapped")
+
+    @objc func showInfo() {
+        let infoViewController = InfoViewController()
+        let navigationController = UINavigationController(rootViewController: infoViewController)
+        present(navigationController, animated: true, completion: nil)
     }
 }
 

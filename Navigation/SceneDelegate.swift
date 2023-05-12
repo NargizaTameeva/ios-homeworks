@@ -22,23 +22,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let profileVC = ProfileViewController()
         let profileNavigationController = UINavigationController(rootViewController: profileVC)
-        profileNavigationController.view.backgroundColor = .systemYellow
         profileNavigationController.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(systemName: "person"), tag: 1)
 
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [feedNavigationController, profileNavigationController]
-        
-        let postVC = PostViewController(post: Post(title: "Заголовок поста"))
-        postVC.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Нажми меня", style: .plain, target: postVC, action: #selector(postVC.buttonTapped))
-        let navigationVC = UINavigationController(rootViewController: postVC)
-        navigationVC.modalPresentationStyle = .fullScreen
-        window?.rootViewController?.present(navigationVC, animated: true, completion: nil)
-        
         window?.rootViewController = tabBarController
-        window?.backgroundColor = .systemMint
         window?.makeKeyAndVisible()
-        
-        
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {}

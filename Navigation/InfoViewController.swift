@@ -8,26 +8,29 @@
 import UIKit
 
 class InfoViewController: UIViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let button = UIButton(type: .system)
-        button.setTitle("Показать Alert", for: .normal)
-        button.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
-        view.addSubview(button)
-
-        button.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            button.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])
+        view.backgroundColor = .white
+        navigationItem.title = "Информация"
+        let alertButton = UIButton(type: .system)
+        alertButton.setTitle("Показать alert", for: .normal)
+        alertButton.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
+        view.addSubview(alertButton)
+        alertButton.translatesAutoresizingMaskIntoConstraints = false
+        alertButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        alertButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
 
-    @objc private func showAlert() {
-        let alert = UIAlertController(title: "Alert", message: "This is an alert.", preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
+    @objc func showAlert() {
+        let alertController = UIAlertController(title: "Заголовок", message: "Сообщение", preferredStyle: .alert)
+        let action1 = UIAlertAction(title: "Действие 1", style: .default) { _ in
+            print("Нажата первая кнопка")
+        }
+        let action2 = UIAlertAction(title: "Действие 2", style: .default) { _ in
+            print("Нажата вторая кнопка")
+        }
+        alertController.addAction(action1)
+        alertController.addAction(action2)
+        present(alertController, animated: true, completion: nil)
     }
 }
