@@ -14,13 +14,8 @@ class ProfileViewController: UIViewController {
         navigationItem.title = "Профиль"
 
         let profileHeaderView = ProfileHeaderView()
-                view.addSubview(profileHeaderView)
-    }
-    override func viewWillLayoutSubviews() {
-            super.viewWillLayoutSubviews()
-          
-            let profileHeaderView = view.subviews.first(where: {$0 is ProfileHeaderView})!
             profileHeaderView.frame = view.frame
-        }
-    
+        view.addSubview(profileHeaderView)
+    }
+   
 }

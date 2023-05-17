@@ -118,10 +118,8 @@ class ProfileHeaderView: UIView {
                ])
           }
 
-
       @objc func buttonPressed() {
           statusLabel.text = statusText
-         // print(statusLabel.text!)
       }
     
     @objc func statusTextChanged(_ textField: UITextField) {
