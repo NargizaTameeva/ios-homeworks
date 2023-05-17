@@ -10,7 +10,12 @@ import UIKit
 class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemYellow
+        view.backgroundColor = .lightGray
         navigationItem.title = "Профиль"
+
+        let profileHeaderView = ProfileHeaderView()
+            profileHeaderView.frame = view.frame
+        view.addSubview(profileHeaderView)
     }
+   
 }
