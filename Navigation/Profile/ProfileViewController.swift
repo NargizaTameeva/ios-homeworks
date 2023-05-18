@@ -15,12 +15,11 @@ class ProfileViewController: UIViewController {
         return profileHV
     }()
     
-    let newButton: UIButton = {
+    private lazy var newButton: UIButton = {
         let button = UIButton()
         button.setTitleColor(.black, for: .normal)
         button.setTitle("Сhange title", for: .normal)
-        button.backgroundColor = .gray
-       // button.addTarget(self, action: #selector(addPost), for: .touchUpInside)
+        button.backgroundColor = .green
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -31,11 +30,11 @@ class ProfileViewController: UIViewController {
         navigationItem.title = "Профиль"
         view.addSubview(profileHeaderView)
         view.addSubview(newButton)
-        setupContraints ()
+        setupContraints()
     }
     
     
-    private func setupContraints (){
+    private func setupContraints(){
         let safeAreaLayoutGuide = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
@@ -47,7 +46,6 @@ class ProfileViewController: UIViewController {
             newButton.leadingAnchor.constraint(equalTo:view.leadingAnchor , constant : 0),
             newButton.trailingAnchor.constraint(equalTo:view.trailingAnchor, constant : 0),
             newButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
-        
         
         ])
     }
