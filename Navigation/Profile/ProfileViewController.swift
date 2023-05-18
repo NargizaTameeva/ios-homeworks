@@ -8,14 +8,49 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
+
+    private let profileHeaderView: ProfileHeaderView = {
+        let profileHV = ProfileHeaderView()
+        profileHV.translatesAutoresizingMaskIntoConstraints = false
+        return profileHV
+    }()
+    
+    let newButton: UIButton = {
+        let button = UIButton()
+        button.setTitleColor(.black, for: .normal)
+        button.setTitle("Сhange title", for: .normal)
+        button.backgroundColor = .gray
+       // button.addTarget(self, action: #selector(addPost), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
         navigationItem.title = "Профиль"
-
-        let profileHeaderView = ProfileHeaderView()
-            profileHeaderView.frame = view.frame
         view.addSubview(profileHeaderView)
+        view.addSubview(newButton)
+        setupContraints ()
     }
+    
+    
+    private func setupContraints (){
+        let safeAreaLayoutGuide = view.safeAreaLayoutGuide
+        
+        NSLayoutConstraint.activate([
+            profileHeaderView.leadingAnchor.constraint(equalTo:view.leadingAnchor , constant : 0),
+            profileHeaderView.trailingAnchor.constraint(equalTo:view.trailingAnchor, constant : 0),
+            profileHeaderView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            profileHeaderView.heightAnchor.constraint(equalToConstant: 220),
+            
+            newButton.leadingAnchor.constraint(equalTo:view.leadingAnchor , constant : 0),
+            newButton.trailingAnchor.constraint(equalTo:view.trailingAnchor, constant : 0),
+            newButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+        
+        
+        ])
+    }
+    
    
 }

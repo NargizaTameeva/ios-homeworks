@@ -100,7 +100,7 @@ class ProfileHeaderView: UIView {
                    nameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor,constant: 16),
                    
                    
-                   statusLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 40),
+                   statusLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 30),
                    statusLabel.leadingAnchor.constraint(equalTo:avatarImageView.trailingAnchor,constant: 16),
                    statusLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
                   
