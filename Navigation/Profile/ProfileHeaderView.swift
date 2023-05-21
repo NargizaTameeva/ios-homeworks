@@ -80,7 +80,7 @@ class ProfileHeaderView: UIView {
         addSubview(statusLabel)
         addSubview(statusButton)
         addSubview(statusTextField)
-        setupLayout()
+        setupContraints()
     
     }
 
@@ -88,7 +88,7 @@ class ProfileHeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func setupLayout() {
+    private func setupContraints(){
         NSLayoutConstraint.activate([
                    avatarImageView.widthAnchor.constraint(equalToConstant: 120),
                    avatarImageView.heightAnchor.constraint(equalToConstant: 120),
@@ -100,7 +100,7 @@ class ProfileHeaderView: UIView {
                    nameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor,constant: 16),
                    
                    
-                   statusLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 40),
+                   statusLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 30),
                    statusLabel.leadingAnchor.constraint(equalTo:avatarImageView.trailingAnchor,constant: 16),
                    statusLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
                   
