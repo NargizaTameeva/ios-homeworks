@@ -13,7 +13,9 @@ class ProfileViewController: UIViewController {
         let profileHV = ProfileHeaderView()
         profileHV.translatesAutoresizingMaskIntoConstraints = false
         return profileHV
+    
     }()
+    
     
     private lazy var newButton: UIButton = {
         let button = UIButton()
@@ -25,14 +27,18 @@ class ProfileViewController: UIViewController {
     }()
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .lightGray
-        navigationItem.title = "Профиль"
-        view.addSubview(profileHeaderView)
-        view.addSubview(newButton)
-        setupContraints()
-    }
-    
+            super.viewDidLoad()
+            view.backgroundColor = .lightGray
+            navigationItem.title = "Профиль"
+            view.addSubview(profileHeaderView)
+            view.addSubview(newButton)
+            setupContraints()
+        }
+
+        @objc func hideKeyboard() {
+            view.endEditing(true)
+        }
+
     
     private func setupContraints(){
         let safeAreaLayoutGuide = view.safeAreaLayoutGuide
@@ -51,4 +57,11 @@ class ProfileViewController: UIViewController {
     }
     
    
+}
+
+extension ProfileViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
