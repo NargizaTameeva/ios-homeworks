@@ -5,8 +5,6 @@
 //  Created by Наргиза Тамеева on 14.05.2023.
 //
 
-
-
 import UIKit
 
 class ProfileHeaderView: UIView {
@@ -56,8 +54,8 @@ class ProfileHeaderView: UIView {
         return button
     }()
     
-    lazy var statusTextField: UITextField = {
-        let textField = UITextField()
+    lazy var statusTextField: TextFieldWithPadding = {
+        let textField = TextFieldWithPadding()
         textField.placeholder = "Введите статус"
         textField.backgroundColor = .white
         textField.font = .systemFont(ofSize: 15, weight: .regular)
@@ -67,6 +65,7 @@ class ProfileHeaderView: UIView {
         textField.layer.borderColor = UIColor.black.cgColor
         textField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.delegate = self
         return textField
     }()
     
@@ -126,6 +125,14 @@ class ProfileHeaderView: UIView {
         statusText = textField.text ?? ""
     }
   }
+
+extension ProfileHeaderView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
+
 
 
 
