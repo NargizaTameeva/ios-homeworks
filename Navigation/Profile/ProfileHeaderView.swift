@@ -54,8 +54,8 @@ class ProfileHeaderView: UIView {
         return button
     }()
     
-    lazy var statusTextField: UITextField = {
-        let textField = UITextField()
+    lazy var statusTextField: TextFieldWithPadding = {
+        let textField = TextFieldWithPadding()
         textField.placeholder = "Введите статус"
         textField.backgroundColor = .white
         textField.font = .systemFont(ofSize: 15, weight: .regular)

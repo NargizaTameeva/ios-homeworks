@@ -49,7 +49,7 @@ class FeedViewController: UIViewController {
         stackView.distribution = .fillEqually
         stackView.alignment = .fill
         stackView.spacing = 10
-        
+       
         stackView.addArrangedSubview(self.firstButton)
         stackView.addArrangedSubview(self.secondButton)
         
