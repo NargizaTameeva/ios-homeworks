@@ -71,7 +71,6 @@ class ProfileHeaderView: UIView {
     
     private var statusText: String = ""
     
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(avatarImageView)
@@ -80,7 +79,6 @@ class ProfileHeaderView: UIView {
         addSubview(statusButton)
         addSubview(statusTextField)
         setupContraints()
-    
     }
 
     required init?(coder: NSCoder) {
@@ -98,12 +96,10 @@ class ProfileHeaderView: UIView {
                    nameLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
                    nameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor,constant: 16),
                    
-                   
                    statusLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 30),
                    statusLabel.leadingAnchor.constraint(equalTo:avatarImageView.trailingAnchor,constant: 16),
                    statusLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
-                  
-                   
+                                     
                    statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 16),
                    statusTextField.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
                    statusTextField.heightAnchor.constraint(equalToConstant: 40),
