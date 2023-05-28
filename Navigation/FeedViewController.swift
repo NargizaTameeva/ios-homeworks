@@ -76,7 +76,7 @@ class FeedViewController: UIViewController {
     }
     
     @objc func addPost() {
-        let post = Post(title: "Новый пост")
+        let post = Post(author: "", description: "Новый пост ", image: "", likes: 0, views: 0)
         let postViewController = PostViewController(post: post)
         navigationController?.pushViewController(postViewController, animated: true)
     }
