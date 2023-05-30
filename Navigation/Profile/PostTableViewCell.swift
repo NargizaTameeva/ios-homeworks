@@ -80,17 +80,17 @@ class PostTableViewCell: UITableViewCell {
          viewsLabel].forEach({ contentView.addSubview($0) })
         
         NSLayoutConstraint.activate([
-            authorLabel.topAnchor.constraint(equalTo:contentView.topAnchor),
+            authorLabel.topAnchor.constraint(equalTo:contentView.topAnchor ,constant: 16),
             authorLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             authorLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
         
-            postImageView.topAnchor.constraint(equalTo: authorLabel.bottomAnchor),
+            postImageView.topAnchor.constraint(equalTo: authorLabel.bottomAnchor ,constant: 12),
             postImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             postImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             postImageView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
             postImageView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
         
-            descriptionLabel.topAnchor.constraint(equalTo: postImageView.bottomAnchor),
+            descriptionLabel.topAnchor.constraint(equalTo: postImageView.bottomAnchor ,constant: 16),
             descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
         

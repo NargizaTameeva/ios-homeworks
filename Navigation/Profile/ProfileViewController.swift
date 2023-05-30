@@ -10,7 +10,10 @@ import UIKit
 class ProfileViewController: UIViewController {
     
     private lazy var tableView: UITableView = {
-        let tableView = UITableView()
+        let tableView = UITableView(
+            frame: .zero,
+            style: .grouped
+        )
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -21,10 +24,7 @@ class ProfileViewController: UIViewController {
         setupUI()
         setupTable()
         
-        let headerView = ProfileHeaderView()
-        headerView.frame = CGRect(x: 0, y: 0, width: tableView.frame.width, height: 250)
-        headerView.backgroundColor = .lightGray
-        tableView.tableHeaderView = headerView
+
     }
     
     private func setupTable() {
@@ -47,6 +47,16 @@ class ProfileViewController: UIViewController {
 
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
+            let header = ProfileHeaderView()
+            return header
+        } else {
+            return nil
+        }
+    }
+    
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
