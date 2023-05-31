@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A2096EED2A1A98D8002CBE5E /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2096EEC2A1A98D8002CBE5E /* LogInViewController.swift */; };
 		A2266FF72A211333000CF1C0 /* TextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2266FF62A211333000CF1C0 /* TextFieldWithPadding.swift */; };
+		A2266FFD2A2277B6000CF1C0 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2266FFC2A2277B6000CF1C0 /* PostTableViewCell.swift */; };
 		A23E10092A0A9BFF00B6207D /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23E10082A0A9BFF00B6207D /* FeedViewController.swift */; };
 		A23E100B2A0A9C2100B6207D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23E100A2A0A9C2100B6207D /* ProfileViewController.swift */; };
 		A23E100D2A0AA65600B6207D /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23E100C2A0AA65600B6207D /* PostViewController.swift */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		A2096EEC2A1A98D8002CBE5E /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		A2266FF62A211333000CF1C0 /* TextFieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithPadding.swift; sourceTree = "<group>"; };
+		A2266FFC2A2277B6000CF1C0 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		A23E10082A0A9BFF00B6207D /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		A23E100A2A0A9C2100B6207D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A23E100C2A0AA65600B6207D /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 				A23E10132A11542F00B6207D /* ProfileHeaderView.swift */,
 				A23E100A2A0A9C2100B6207D /* ProfileViewController.swift */,
 				A2096EEC2A1A98D8002CBE5E /* LogInViewController.swift */,
+				A2266FFC2A2277B6000CF1C0 /* PostTableViewCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 				A23E10112A0AAE4B00B6207D /* InfoViewController.swift in Sources */,
 				A2096EED2A1A98D8002CBE5E /* LogInViewController.swift in Sources */,
 				A251469A2A0A5F7D00A9FCDF /* SceneDelegate.swift in Sources */,
+				A2266FFD2A2277B6000CF1C0 /* PostTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

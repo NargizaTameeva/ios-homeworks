@@ -15,7 +15,7 @@ class PostViewController: UIViewController {
     init(post: Post) {
         self.post = post
         super.init(nibName: nil, bundle: nil)
-        title = post.title
+        title = post.description
     }
 
     required init?(coder: NSCoder) {

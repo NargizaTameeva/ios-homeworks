@@ -45,7 +45,7 @@ class ProfileHeaderView: UIView {
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.layer.cornerRadius = 4
+        button.layer.cornerRadius = 12
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = 0.7
         button.layer.shadowOffset = CGSize(width: 4, height: 4)
@@ -71,7 +71,6 @@ class ProfileHeaderView: UIView {
     
     private var statusText: String = ""
     
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(avatarImageView)
@@ -80,7 +79,6 @@ class ProfileHeaderView: UIView {
         addSubview(statusButton)
         addSubview(statusTextField)
         setupContraints()
-    
     }
 
     required init?(coder: NSCoder) {
@@ -89,6 +87,7 @@ class ProfileHeaderView: UIView {
 
     private func setupContraints(){
         NSLayoutConstraint.activate([
+
                    avatarImageView.widthAnchor.constraint(equalToConstant: 120),
                    avatarImageView.heightAnchor.constraint(equalToConstant: 120),
                    avatarImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
@@ -98,13 +97,11 @@ class ProfileHeaderView: UIView {
                    nameLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
                    nameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor,constant: 16),
                    
-                   
                    statusLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 30),
                    statusLabel.leadingAnchor.constraint(equalTo:avatarImageView.trailingAnchor,constant: 16),
                    statusLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
-                  
-                   
-                   statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 16),
+                                     
+                   statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 8),
                    statusTextField.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
                    statusTextField.heightAnchor.constraint(equalToConstant: 40),
                    statusTextField.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
@@ -112,7 +109,8 @@ class ProfileHeaderView: UIView {
                    statusButton.topAnchor.constraint(equalTo:statusTextField.bottomAnchor,constant: 16),
                    statusButton.leadingAnchor.constraint(equalTo:safeAreaLayoutGuide.leadingAnchor, constant: 16),
                    statusButton.trailingAnchor.constraint(equalTo:safeAreaLayoutGuide.trailingAnchor, constant: -16),
-                   statusButton.heightAnchor.constraint(equalToConstant: 50)
+                   statusButton.heightAnchor.constraint(equalToConstant: 50),
+                   statusButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor,constant: -16)
                    
                ])
           }
@@ -132,6 +130,7 @@ extension ProfileHeaderView: UITextFieldDelegate {
         return true
     }
 }
+
 
 
 
