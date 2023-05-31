@@ -20,7 +20,8 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Профиль"
+        view.backgroundColor = .lightGray
+        navigationItem.hidesBackButton = true
         setupUI()
         setupTable()
         
@@ -51,6 +52,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
             let header = ProfileHeaderView()
+            header.backgroundColor = .lightGray
             return header
         } else {
             return nil
