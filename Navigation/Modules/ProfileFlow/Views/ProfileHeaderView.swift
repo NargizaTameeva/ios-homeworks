@@ -3,12 +3,19 @@
 //  Navigation
 //
 //  Created by Наргиза Тамеева on 14.05.2023.
-//
 
 import UIKit
 
-class ProfileHeaderView: UIView {
+typealias Action = ()-> Void
 
+class ProfileHeaderView: UIView {
+    
+    private var statusText: String = ""
+    
+    var tapOnImage: Action?
+
+    //MARK : - Subwiews
+    
     private let avatarImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "avatar")
@@ -69,7 +76,7 @@ class ProfileHeaderView: UIView {
         return textField
     }()
     
-    private var statusText: String = ""
+ 
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -79,12 +86,43 @@ class ProfileHeaderView: UIView {
         addSubview(statusButton)
         addSubview(statusTextField)
         setupContraints()
+        addGesture()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+    private func addGesture(){
+        let gesture = UITapGestureRecognizer(target: self, action:#selector(tapOnGesture))
+        avatarImageView.isUserInteractionEnabled = true
+        avatarImageView.addGestureRecognizer(gesture)
+    }
+    
+    
+    
+    @objc
+    private func tapOnGesture (){
+            tapOnImage?()
+            animateAvatar()
+    }
+    
+    
+    private func animateAvatar() {
+        let center = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2)
+        let animator = UIViewPropertyAnimator(duration: 0.5, curve: .linear) {
+            self.avatarImageView.center = center
+            }
+            animator.startAnimation()
+           animator.addCompletion { _ in
+            
+           }
+           
+    }
+
+
+    
+    
     private func setupContraints(){
         NSLayoutConstraint.activate([
 
@@ -122,6 +160,10 @@ class ProfileHeaderView: UIView {
     @objc func statusTextChanged(_ textField: UITextField) {
         statusText = textField.text ?? ""
     }
+    
+    
+
+    
   }
 
 extension ProfileHeaderView: UITextFieldDelegate {
@@ -130,11 +172,3 @@ extension ProfileHeaderView: UITextFieldDelegate {
         return true
     }
 }
-
-
-
-
-
-     
-
-
