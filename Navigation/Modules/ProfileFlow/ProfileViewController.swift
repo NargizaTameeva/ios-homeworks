@@ -9,6 +9,8 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
+    private let detailView = DetailPhotoView()
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(
             frame: .zero,
@@ -25,7 +27,7 @@ class ProfileViewController: UIViewController {
         setupUI()
         setupTable()
         
-
+        
     }
     
     private func setupTable() {
@@ -45,7 +47,64 @@ class ProfileViewController: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
     }
+    
+    private func setupDetailPhotoView() {
+        let detailView = DetailPhotoView()
+        detailView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(detailView)
+        detailView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+        let center = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2)
+        let initialFrame = CGRect(origin: center, size: CGSize.zero)
+        let targetFrame = CGRect(x: self.view.safeAreaInsets.left, y: self.view.safeAreaInsets.top, width: self.view.bounds.width - self.view.safeAreaInsets.left - self.view.safeAreaInsets.right, height: self.view.bounds.height - self.view.safeAreaInsets.top - self.view.safeAreaInsets.bottom)
+        let initialPath = UIBezierPath(ovalIn: initialFrame).cgPath
+        let targetPath = UIBezierPath(rect: targetFrame).cgPath
+        let maskLayer = CAShapeLayer()
+        maskLayer.path = initialPath
+        detailView.layer.mask = maskLayer
+        let maskLayerAnimation = CABasicAnimation(keyPath: "path")
+        maskLayerAnimation.fromValue = initialPath
+        maskLayerAnimation.toValue = targetPath
+        maskLayerAnimation.duration = 0.3
+        maskLayerAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        maskLayerAnimation.fillMode = CAMediaTimingFillMode.forwards
+        maskLayerAnimation.isRemovedOnCompletion = false
+        maskLayer.add(maskLayerAnimation, forKey: "path")
+        UIView.animate(withDuration: 0.3, animations: {
+            detailView.transform = .identity
+        })
+        NSLayoutConstraint.activate([
+            detailView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            detailView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            detailView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            detailView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+        ])
+        self.view.layoutIfNeeded()
+        detailView.animateCloseButton()
+        detailView.closeButton.addTarget(self, action: #selector(closeButtonPressed), for: .touchUpInside)
+    }
+    
+ 
+    @objc private func closeButtonPressed() {
+        print("closeButtonPressed")
+        reverseAnimationCloseButton()
+    
+    }
+    
+    @objc private func reverseAnimationCloseButton(){
+        UIView.animate(withDuration: 0.3) {
+            self.detailView.closeButton.alpha = 0
+        }
+        UIView.animate(withDuration: 0.3, animations: {
+            self.detailView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+            self.detailView.alpha = 0
+        })
+        UIView.animate(withDuration: 0.5) {
+         //   self.detailView. = .identity
+       }
+    }
+
 }
+
 
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
@@ -57,6 +116,12 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         if section == 0 {
             let header = ProfileHeaderView()
             header.backgroundColor = .systemGray6
+            header.tapOnImage = {[weak self] in
+                print("Taped on the image")
+                
+               self?.setupDetailPhotoView()
+                
+            }
             return header
         } else {
             let header = UIView()
@@ -65,6 +130,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             return header
         }
     }
+    
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
@@ -102,4 +169,3 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
  
 }
-
